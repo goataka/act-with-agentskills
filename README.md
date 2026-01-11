@@ -54,7 +54,8 @@ npm test
 .
 ├── .github/
 │   ├── skills/
-│   │   └── build-and-test.json  # エージェントスキル定義
+│   │   └── build-and-test/
+│   │       └── SKILL.md         # エージェントスキル定義
 │   └── workflows/
 │       └── build-test.yml       # GitHub Actionワークフロー
 ├── index.js                     # サンプルコード
@@ -64,7 +65,8 @@ npm test
 
 ## エージェントスキル
 
-`.github/skills/build-and-test.json`にエージェントスキルが定義されています。
+`.github/skills/build-and-test/SKILL.md`にエージェントスキルが定義されています。
+[Agent Skills仕様](https://github.com/agentskills/agentskills)に準拠し、YAML frontmatter + Markdownで記述されています。
 この設定により、GitHub Copilotエージェントがビルドとテストを実行できます。
 
 ## ライセンス
