@@ -1,0 +1,12 @@
+{
+  "name": "act-with-agentskills",
+  "version": "1.0.0",
+  "description": "Minimal Node.js sample for act and agent skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "build": "echo 'Build completed'"
+  },
+  "keywords": ["act", "agent-skills"],
+  "license": "MIT"
+}
