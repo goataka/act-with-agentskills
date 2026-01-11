@@ -1,39 +1,37 @@
 ---
 name: build-and-test
-description: Build and test the Node.js application
+description: Build and test the Node.js application using act
 license: MIT
 ---
 
 # Build and Test Skill
 
-This skill provides commands to build and test the Node.js application.
+This skill uses `act` to run the GitHub Actions workflow locally for building and testing the Node.js application.
+
+## Prerequisites
+
+- act must be installed ([installation guide](https://github.com/nektos/act#installation))
+- Docker must be running (required by act)
 
 ## Commands
 
-### Install dependencies
+### Run build and test workflow with act
 ```bash
-npm install
+act -j build-and-test
 ```
 
-### Build the application
+This command:
+- Runs the `build-and-test` job from `.github/workflows/build-test.yml`
+- Executes in a containerized environment (similar to GitHub Actions)
+- Installs dependencies, builds, and tests the application
+
+### Alternative: Run all workflow triggers
 ```bash
-npm run build
+act push
 ```
-
-### Run tests
-```bash
-npm test
-```
-
-## Workflow
-
-To build and test the application, run the following commands in sequence:
-
-1. Install dependencies: `npm install`
-2. Build: `npm run build`
-3. Test: `npm test`
 
 ## Notes
 
-- Requires Node.js v18 or later
-- All commands should be run from the project root directory
+- Requires act installed and Docker running
+- First run may take time to pull Docker images
+- Uses the GitHub Actions workflow defined in `.github/workflows/build-test.yml`
