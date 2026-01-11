@@ -19,6 +19,11 @@
     "using": "composite",
     "steps": [
       {
+        "name": "Install dependencies",
+        "run": "npm install",
+        "shell": "bash"
+      },
+      {
         "name": "Build",
         "run": "npm run build",
         "shell": "bash"
