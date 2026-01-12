@@ -39,14 +39,20 @@ npm test
 
 ### GitHub Actions
 
-GHAは `verify.sh` を実行し、さらにGHA固有のアクション（Node.jsセットアップなど）を追加：
+GHAは `verify.sh` を実行し、さらにGHA固有のアクション（Node.jsセットアップ、PR通知など）を追加：
 
 ```yaml
 steps:
   - uses: actions/checkout@v4
-  - uses: actions/setup-node@v4  # GHA固有アクション
-  - run: ./verify.sh              # 共通検証スクリプト
+  - uses: actions/setup-node@v4          # GHA固有: Node.jsセットアップ
+  - run: bash verify.sh                   # 共通検証スクリプト
+  - uses: actions/github-script@v7       # GHA固有: PRへ結果通知
 ```
+
+GHA固有のアクション例：
+- **Node.jsセットアップ**: CI環境で必要な実行環境の準備
+- **PRコメント通知**: 検証結果をPRに自動コメント
+- **チェックアウト**: リポジトリのコードを取得
 
 ### エージェント
 

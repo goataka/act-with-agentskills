@@ -6,7 +6,7 @@ license: MIT
 
 # GitHub Actions参照スキル
 
-GHAワークフローを参照し、`verify.sh` の使用方法を理解します。
+GHAワークフローを参照し、`verify.sh` の使用方法とGHA固有アクションを理解します。
 
 ## コマンド
 
@@ -18,6 +18,7 @@ cat .github/workflows/build-test.yml
 ワークフローは以下を実行しています：
 1. Node.jsのセットアップ（GHA固有アクション）
 2. `verify.sh` の実行（共通検証スクリプト）
+3. PRへの結果通知（GHA固有アクション）
 
 ### ローカルで同じ検証を実行
 ```bash
@@ -29,4 +30,5 @@ cat .github/workflows/build-test.yml
 
 - GHAの構成を理解するための参照
 - ローカルでは `verify.sh` を直接実行
-- GHA固有アクション（actions/checkout, actions/setup-nodeなど）はローカルでは不要
+- GHA固有アクション（actions/checkout, actions/setup-node, PRコメントなど）はローカルでは不要
+- PRコメント通知はGHAでのみ機能（ローカルでは不可能）
