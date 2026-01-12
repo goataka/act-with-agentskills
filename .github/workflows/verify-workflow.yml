@@ -1,0 +1,21 @@
+name: Verify Workflow Changes
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/build-test.yml'
+
+jobs:
+  verify-with-act:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup act
+        run: |
+          curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
+
+      - name: Verify workflow with act
+        run: |
+          act -j build-and-test --dryrun
+          echo "✅ ワークフロー構文検証成功"
