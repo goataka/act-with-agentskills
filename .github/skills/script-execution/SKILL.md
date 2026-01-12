@@ -1,16 +1,16 @@
 ---
 name: script-execution
-description: Fix bug by creating and executing a shell script
+description: シェルスクリプトを作成して実行し、不具合を修正
 license: MIT
 ---
 
-# Script Execution Skill
+# スクリプト実行スキル
 
-Create a shell script with commands, then execute it to fix bugs.
+コマンドをシェルスクリプトに記述し、それを実行して不具合を修正します。
 
-## Commands
+## コマンド
 
-### Create test script
+### テストスクリプトを作成
 ```bash
 cat > test.sh << 'EOF'
 #!/bin/bash
@@ -19,21 +19,21 @@ EOF
 chmod +x test.sh
 ```
 
-### Execute script to identify bug
+### スクリプトを実行して不具合を特定
 ```bash
 ./test.sh
 ```
 
-### Fix the bug
-Edit `index.js` to add the missing exclamation mark.
+### 不具合を修正
+`index.js`を編集し、不足している感嘆符を追加します。
 
-### Verify with script
+### スクリプトで検証
 ```bash
 ./test.sh
 ```
 
-## Notes
+## 備考
 
-- Reusable script for repeated testing
-- Can be version controlled
-- Good for complex command sequences
+- 繰り返しテストに使えるスクリプト
+- バージョン管理可能
+- 複雑なコマンドシーケンスに適している

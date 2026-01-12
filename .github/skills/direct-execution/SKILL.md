@@ -1,30 +1,30 @@
 ---
 name: direct-execution
-description: Fix bug by directly executing build and test commands
+description: ビルドとテストコマンドを直接実行して不具合を修正
 license: MIT
 ---
 
-# Direct Execution Skill
+# 直接実行スキル
 
-Directly execute build and test commands to identify and fix bugs.
+ビルドとテストコマンドを直接実行し、不具合を特定して修正します。
 
-## Commands
+## コマンド
 
-### Run test to identify bug
+### テストを実行して不具合を特定
 ```bash
 npm test
 ```
 
-### Fix the bug
-Edit `index.js` to add the missing exclamation mark in the return statement.
+### 不具合を修正
+`index.js`を編集し、return文に不足している感嘆符を追加します。
 
-### Verify the fix
+### 修正を検証
 ```bash
 npm test
 ```
 
-## Notes
+## 備考
 
-- Simple and direct approach
-- No intermediate files needed
-- Quick for small fixes
+- シンプルで直接的なアプローチ
+- 中間ファイルが不要
+- 小規模な修正に最適

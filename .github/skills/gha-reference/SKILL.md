@@ -1,38 +1,38 @@
 ---
 name: gha-reference
-description: Use GitHub Actions workflow as reference, execute directly
+description: GitHub Actionsワークフローを参照し、コマンドを直接実行
 license: MIT
 ---
 
-# GitHub Actions Reference Skill
+# GitHub Actions参照スキル
 
-Reference the GitHub Actions workflow, then execute commands directly.
+GitHub Actionsワークフローを参照し、コマンドを直接実行します。
 
-## Commands
+## コマンド
 
-### View workflow steps
+### ワークフローステップを確認
 ```bash
 cat .github/workflows/build-test.yml
 ```
 
-### Execute commands from workflow manually
+### ワークフローから手動でコマンドを実行
 ```bash
 npm install
 npm run build
 npm test
 ```
 
-### Identify and fix the bug
-Edit `index.js` to add the missing exclamation mark.
+### 不具合を特定して修正
+`index.js`を編集し、不足している感嘆符を追加します。
 
-### Verify directly
+### 直接検証
 ```bash
 npm test
 ```
 
-## Notes
+## 備考
 
-- Workflow serves as reference documentation
-- No act/Docker requirement
-- Fast local execution
-- Good for development iteration
+- ワークフローが参考ドキュメントとして機能
+- act/Docker不要
+- 高速なローカル実行
+- 開発イテレーションに適している

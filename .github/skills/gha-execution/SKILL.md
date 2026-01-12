@@ -1,38 +1,38 @@
 ---
 name: gha-execution
-description: Fix bug using GitHub Actions workflow with act
+description: actを使用してGitHub Actionsワークフローで不具合を修正
 license: MIT
 ---
 
-# GitHub Actions Execution Skill
+# GitHub Actions実行スキル
 
-Use act to run GitHub Actions workflow for bug identification and verification.
+actを使用してGitHub Actionsワークフローを実行し、不具合を特定して検証します。
 
-## Prerequisites
+## 前提条件
 
-- act must be installed
-- Docker must be running
+- actがインストールされていること
+- Dockerが起動していること
 
-## Commands
+## コマンド
 
-### Execute workflow with act
+### actでワークフローを実行
 ```bash
 act -j build-and-test
 ```
 
-### Identify bug from workflow output
-The test step will fail and show the bug.
+### ワークフロー出力から不具合を特定
+テストステップが失敗し、不具合が表示されます。
 
-### Fix the bug
-Edit `index.js` to add the missing exclamation mark.
+### 不具合を修正
+`index.js`を編集し、不足している感嘆符を追加します。
 
-### Verify with act
+### actで検証
 ```bash
 act -j build-and-test
 ```
 
-## Notes
+## 備考
 
-- Tests in CI-like environment
-- Ensures workflow correctness
-- Requires act and Docker setup
+- CI環境と同様の環境でテスト
+- ワークフローの正確性を保証
+- actとDockerのセットアップが必要
