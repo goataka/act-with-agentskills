@@ -1,38 +1,32 @@
 ---
 name: gha-reference
-description: GitHub Actionsワークフローを参照し、コマンドを直接実行
+description: GHAワークフローを参照してverify.shの使用方法を理解
 license: MIT
 ---
 
 # GitHub Actions参照スキル
 
-GitHub Actionsワークフローを参照し、コマンドを直接実行します。
+GHAワークフローを参照し、`verify.sh` の使用方法を理解します。
 
 ## コマンド
 
-### ワークフローステップを確認
+### ワークフローを確認
 ```bash
 cat .github/workflows/build-test.yml
 ```
 
-### ワークフローから手動でコマンドを実行
-```bash
-npm install
-npm run build
-npm test
-```
+ワークフローは以下を実行しています：
+1. Node.jsのセットアップ（GHA固有アクション）
+2. `verify.sh` の実行（共通検証スクリプト）
 
-### 不具合を特定して修正
-`index.js`を編集し、不足している感嘆符を追加します。
-
-### 直接検証
+### ローカルで同じ検証を実行
 ```bash
-npm test
+# GHA固有アクションは不要（Node.jsは既にインストール済み）
+./verify.sh
 ```
 
 ## 備考
 
-- ワークフローが参考ドキュメントとして機能
-- act/Docker不要
-- 高速なローカル実行
-- 開発イテレーションに適している
+- GHAの構成を理解するための参照
+- ローカルでは `verify.sh` を直接実行
+- GHA固有アクション（actions/checkout, actions/setup-nodeなど）はローカルでは不要

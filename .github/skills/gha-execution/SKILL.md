@@ -1,12 +1,12 @@
 ---
 name: gha-execution
-description: actを使用してGitHub Actionsワークフローで不具合を修正
+description: actを使用してGHA変更を検証
 license: MIT
 ---
 
 # GitHub Actions実行スキル
 
-actを使用してGitHub Actionsワークフローを実行し、不具合を特定して検証します。
+actを使用してGitHub Actionsワークフローの変更を検証します。
 
 ## 前提条件
 
@@ -15,24 +15,23 @@ actを使用してGitHub Actionsワークフローを実行し、不具合を特
 
 ## コマンド
 
-### actでワークフローを実行
+### ワークフローを実行して検証
 ```bash
 act -j build-and-test
 ```
 
-### ワークフロー出力から不具合を特定
-テストステップが失敗し、不具合が表示されます。
+### ワークフローを変更
+```bash
+vim .github/workflows/build-test.yml
+```
 
-### 不具合を修正
-`index.js`を編集し、不足している感嘆符を追加します。
-
-### actで検証
+### 変更を検証
 ```bash
 act -j build-and-test
 ```
 
 ## 備考
 
-- CI環境と同様の環境でテスト
-- ワークフローの正確性を保証
-- actとDockerのセットアップが必要
+- actはGHA変更の事前検証に使用
+- ローカルでGHAをテスト可能
+- CI/CDパイプラインを壊す前に確認できる

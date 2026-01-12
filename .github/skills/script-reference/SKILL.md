@@ -1,40 +1,34 @@
 ---
 name: script-reference
-description: シェルスクリプトを参考資料として作成し、コマンドを直接実行
+description: verify.shを参照してコマンドを実行
 license: MIT
 ---
 
 # スクリプト参照スキル
 
-シェルスクリプトをドキュメントとして作成し、コマンドは直接実行します。
+`verify.sh` の内容を参照し、必要なコマンドを適切に実行します。
 
 ## コマンド
 
-### 参照用スクリプトを作成
+### 検証スクリプトの内容を確認
 ```bash
-cat > test-reference.sh << 'EOF'
-#!/bin/bash
-# 参照用スクリプト - 手動で実行するコマンド
-npm test
-EOF
+cat verify.sh
 ```
 
-### 参照を確認して直接実行
+### スクリプトの内容を参照して実行
 ```bash
-cat test-reference.sh
+npm install
+npm run build
 npm test
 ```
 
-### 不具合を修正
-`index.js`を編集し、不足している感嘆符を追加します。
-
-### 直接検証
+または、スクリプトを直接実行：
 ```bash
-npm test
+./verify.sh
 ```
 
 ## 備考
 
-- スクリプトがドキュメントとして機能
-- コマンドをその場で柔軟に変更可能
-- 学習と理解に役立つ
+- `verify.sh` がコマンドのドキュメントとして機能
+- エージェントはスクリプトの内容を理解して実行
+- 状況に応じてコマンドを選択的に実行可能
