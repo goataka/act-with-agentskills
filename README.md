@@ -70,24 +70,23 @@ GHA固有のアクション例：
 actはGHAの変更を事前に検証します：
 
 ```bash
-# ワークフローの変更前に実行
-act -j build-and-test --dryrun
-
-# ワークフローを変更
-
-# 変更後に再実行して検証
-act -j build-and-test --dryrun
+# verify-workflow.shでワークフローを検証
+./verify-workflow.sh
 ```
 
 **自動検証：**
-`build-test.yml` が変更されると、`.github/workflows/verify-workflow.yml` が自動的にactで検証を実行します。
+`build-test.yml` が変更されると、`.github/workflows/verify-workflow.yml` が `verify-workflow.sh` を実行してactで検証します。
 
 ## 使い方
 
 ### 人間による検証
 
 ```bash
+# ビルドとテストの検証
 ./verify.sh
+
+# ワークフローの検証
+./verify-workflow.sh
 ```
 
 ### エージェントによる検証
@@ -142,8 +141,9 @@ curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
 │   │   └── gha-reference/
 │   └── workflows/
 │       ├── build-test.yml       # GHA定義（verify.shを利用）
-│       └── verify-workflow.yml  # build-test.yml変更時のact検証
-├── verify.sh                # 検証スクリプト（統合コマンド）
+│       └── verify-workflow.yml  # build-test.yml変更時のact検証（verify-workflow.shを利用）
+├── verify.sh                # 検証スクリプト（ビルドとテスト）
+├── verify-workflow.sh       # ワークフロー検証スクリプト（act使用）
 ├── index.js                 # サンプルコード
 ├── test.js                  # テストコード
 └── package.json             # Node.js設定
