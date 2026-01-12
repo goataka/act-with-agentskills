@@ -18,4 +18,4 @@ jobs:
         with:
           node-version: '18'
       - name: Run verification script
-        run: ./verify.sh
+        run: bash verify.sh
