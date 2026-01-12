@@ -13,7 +13,8 @@ jobs:
 
       - name: Setup act
         run: |
-          curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
+          # actの特定バージョンをインストール
+          curl -L https://github.com/nektos/act/releases/download/v0.2.84/act_Linux_x86_64.tar.gz | sudo tar xz -C /usr/local/bin
 
       - name: Verify workflow with act
         run: |
