@@ -74,6 +74,10 @@ actはGHAの変更を事前に検証します：
 ./verify-workflow.sh
 ```
 
+検証は2段階で実行されます：
+1. **構文検証（dryrun）**: ワークフローの構文をチェック
+2. **実行検証（モック）**: 実際にワークフローを実行（PRコメント等はモック環境で実行）
+
 **自動検証：**
 `build-test.yml` が変更されると、`.github/workflows/verify-workflow.yml` が `verify-workflow.sh` を実行してactで検証します。
 
