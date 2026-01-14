@@ -22,11 +22,21 @@ echo "✅ ワークフロー実行検証成功（push event）"
 
 # PR番号が指定されている場合はPRイベントでも検証
 if [ -n "$PR_NUMBER" ]; then
+  # PR番号が数値であることを検証
+  if ! [[ "$PR_NUMBER" =~ ^[0-9]+$ ]]; then
+    echo "❌ エラー: PR番号は数値である必要があります"
+    exit 1
+  fi
+  
   echo ""
   echo "==> Step 3: Running workflow with act (PR event with mock data)..."
   
+  # 一時ファイルを安全に作成
+  PR_EVENT_FILE=$(mktemp)
+  trap "rm -f $PR_EVENT_FILE" EXIT
+  
   # PRイベント用のペイロードを作成
-  cat > /tmp/pr_event.json <<EOF
+  cat > "$PR_EVENT_FILE" <<EOF
 {
   "pull_request": {
     "number": $PR_NUMBER,
@@ -47,8 +57,11 @@ if [ -n "$PR_NUMBER" ]; then
 }
 EOF
   
-  # PRイベントで実行（PRコメントアクションは実行されるが、GitHub APIはモック環境）
-  act pull_request -j build-and-test -e /tmp/pr_event.json || true
-  
-  echo "✅ ワークフロー実行検証成功（PR event）"
+  # PRイベントで実行（github-scriptアクションはモック環境のため失敗する可能性がある）
+  if act pull_request -j build-and-test -e "$PR_EVENT_FILE"; then
+    echo "✅ ワークフロー実行検証成功（PR event）"
+  else
+    EXIT_CODE=$?
+    echo "⚠️  ワークフロー実行は失敗しましたが、これはモック環境のため想定内です（exit code: $EXIT_CODE）"
+  fi
 fi
