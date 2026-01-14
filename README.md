@@ -72,14 +72,18 @@ actはGHAの変更を事前に検証します：
 ```bash
 # verify-workflow.shでワークフローを検証
 ./verify-workflow.sh
+
+# PR番号を指定してPRイベントも検証
+./verify-workflow.sh 123
 ```
 
-検証は2段階で実行されます：
+検証は最大3段階で実行されます：
 1. **構文検証（dryrun）**: ワークフローの構文をチェック
-2. **実行検証（モック）**: 実際にワークフローを実行（PRコメント等はモック環境で実行）
+2. **実行検証（push event）**: pushイベントで実行（PRコメントをスキップ）
+3. **実行検証（PR event）**: PRイベントで実行（PR番号を指定した場合のみ、PRコメントを含む）
 
 **自動検証：**
-`build-test.yml` が変更されると、`.github/workflows/verify-workflow.yml` が `verify-workflow.sh` を実行してactで検証します。
+`build-test.yml` が変更されると、`.github/workflows/verify-workflow.yml` が `verify-workflow.sh` にPR番号を渡して実行し、actで3段階検証します。
 
 ## 使い方
 
