@@ -152,8 +152,9 @@ curl https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
 │       └── verify-workflow.yml  # build-test.yml変更時のact検証（verify-workflow.shを利用）
 ├── verify.sh                # 検証スクリプト（ビルドとテスト）
 ├── verify-workflow.sh       # ワークフロー検証スクリプト（act使用）
-├── index.js                 # サンプルコード
-├── test.js                  # テストコード
+├── index.ts                 # サンプルコード（TypeScript）
+├── test.ts                  # テストコード（TypeScript）
+├── tsconfig.json            # TypeScript設定
 └── package.json             # Node.js設定
 ```
 

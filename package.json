@@ -2,11 +2,15 @@
   "name": "act-with-agentskills",
   "version": "1.0.0",
   "description": "Minimal Node.js sample for act and agent skills",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "node test.js",
-    "build": "echo 'Build completed'"
+    "build": "tsc",
+    "test": "npm run build && node dist/test.js"
   },
   "keywords": ["act", "agent-skills"],
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/node": "^20.10.6"
+  }
 }

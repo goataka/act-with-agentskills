@@ -1,8 +1,8 @@
-const { greet } = require('./index.js');
+import { greet } from './index';
 
-function test() {
-  const result = greet('World');
-  const expected = 'Hello, World!';
+function test(): void {
+  const result: string = greet('World');
+  const expected: string = 'Hello, World!';
   
   if (result === expected) {
     console.log('✓ Test passed');
